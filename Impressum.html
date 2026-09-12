@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#08080a">
+
+  <title>Der schöne Junge</title>
+
+  <style>
+    :root {
+      color-scheme: light dark;
+
+      --bg: #f5f5f7;
+      --surface: rgba(255, 255, 255, 0.72);
+      --text: #111111;
+      --muted: #6e6e73;
+      --border: rgba(0, 0, 0, 0.08);
+
+      --accent: #fa2d48;
+      --accent-light: #ff7185;
+
+      --shadow:
+        0 30px 90px rgba(0, 0, 0, 0.12);
+
+      --radius-xl: 32px;
+      --radius-lg: 24px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #08080a;
+        --surface: rgba(24, 24, 27, 0.72);
+        --text: #f5f5f7;
+        --muted: #a1a1a6;
+        --border: rgba(255, 255, 255, 0.09);
+
+        --accent: #ff375f;
+        --accent-light: #ff7185;
+
+        --shadow:
+          0 30px 100px rgba(0, 0, 0, 0.45);
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        "SF Pro Text",
+        "Helvetica Neue",
+        Arial,
+        sans-serif;
+
+      color: var(--text);
+      background: var(--bg);
+
+      overflow-x: hidden;
+
+      transition:
+        background 0.4s ease,
+        color 0.4s ease;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* --------------------------------
+       BACKGROUND
+    -------------------------------- */
+
+    .background {
+      position: fixed;
+      inset: 0;
+
+      z-index: -2;
+
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .orb {
+      position: absolute;
+
+      border-radius: 50%;
+
+      filter: blur(110px);
+    }
+
+    .orb-one {
+      width: 650px;
+      height: 650px;
+
+      top: -400px;
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      background: var(--accent);
+      opacity: 0.18;
+    }
+
+    .orb-two {
+      width: 450px;
+      height: 450px;
+
+      top: 35%;
+      left: -300px;
+
+      background: #7c3aed;
+      opacity: 0.09;
+    }
+
+    .orb-three {
+      width: 500px;
+      height: 500px;
+
+      top: 70%;
+      right: -300px;
+
+      background: #ff7a00;
+      opacity: 0.07;
+    }
+
+    /* --------------------------------
+       NAVIGATION
+    -------------------------------- */
+
+    nav {
+      position: fixed;
+
+      top: 18px;
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      width: min(94%, 1050px);
+
+      z-index: 100;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 10px 12px 10px 18px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 999px;
+
+      background:
+        var(--surface);
+
+      backdrop-filter:
+        blur(25px);
+
+      -webkit-backdrop-filter:
+        blur(25px);
+
+      box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      font-size: 14px;
+      font-weight: 700;
+
+      letter-spacing: -0.02em;
+    }
+
+    .brand-icon {
+      width: 31px;
+      height: 31px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 10px;
+
+      color: white;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--accent),
+          var(--accent-light)
+        );
+
+      box-shadow:
+        0 7px 22px rgba(250, 45, 72, 0.30);
+    }
+
+    .nav-link {
+      padding: 9px 17px;
+
+      border-radius: 999px;
+
+      color: white;
+
+      background:
+        var(--accent);
+
+      font-size: 13px;
+      font-weight: 700;
+
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .nav-link:hover {
+      transform: translateY(-1px);
+
+      box-shadow:
+        0 10px 25px rgba(250, 45, 72, 0.3);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+
+      align-items: center;
+      gap: 8px;
+
+      margin-bottom: 24px;
+
+      color: var(--accent);
+
+      font-size: 12px;
+      font-weight: 800;
+
+      letter-spacing: 0.13em;
+
+      text-transform: uppercase;
+    }
+
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+
+      background:
+        var(--accent);
+
+      box-shadow:
+        0 0 0 5px rgba(250, 45, 72, 0.10),
+        0 0 20px rgba(250, 45, 72, 0.45);
+    }
+
+    h1 {
+      max-width: 1050px;
+
+      font-size:
+        clamp(64px, 12vw, 145px);
+
+      line-height: 0.84;
+
+      letter-spacing:
+        -0.09em;
+
+      font-weight: 800;
+    }
+
+    .gradient {
+      background:
+        linear-gradient(
+          135deg,
+          var(--accent),
+          var(--accent-light)
+        );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-button {
+      padding: 9px 17px;
+
+      border-radius: 999px;
+
+      color: #fff;
+      background: var(--accent);
+
+      font-size: 13px;
+      font-weight: 700;
+
+      transition: 0.2s ease;
+    }
+
+    .nav-button:hover {
+      transform: translateY(-1px);
+
+      box-shadow:
+        0 10px 25px rgba(250, 45, 72, 0.3);
+    }
+ 
+    .hero-text {
+      max-width: 590px;
+
+      margin-top: 32px;
+
+      color: var(--muted);
+
+      font-size:
+        clamp(17px, 2vw, 20px);
+
+      line-height: 1.6;
+    }
+
+    .hero-links {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      justify-content: center;
+
+      gap: 12px;
+
+      margin-top: 38px;
+    }
+
+    .button {
+      min-height: 50px;
+
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      padding: 0 23px;
+
+      border-radius: 999px;
+
+      font-size: 14px;
+      font-weight: 700;
+
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+    }
+
+    .button-primary {
+      color: white;
+
+      background:
+        var(--accent);
+
+      box-shadow:
+        0 12px 30px rgba(250, 45, 72, 0.25);
+    }
+
+    .button-primary:hover {
+      transform: translateY(-2px);
+
+      box-shadow:
+        0 17px 38px rgba(250, 45, 72, 0.35);
+    }
+
+    .button-secondary {
+      border:
+        1px solid var(--border);
+
+      background:
+        var(--surface);
+
+      backdrop-filter:
+        blur(20px);
+
+      -webkit-backdrop-filter:
+        blur(20px);
+    }
+
+    .button-secondary:hover {
+      transform: translateY(-2px);
+    }
+
+    /* --------------------------------
+       CONTENT
+    -------------------------------- */
+
+    .section {
+      width: min(900px, 92%);
+
+      margin: auto;
+
+      padding:
+        80px 0
+        110px;
+    }
+
+    .section-number {
+      margin-bottom: 12px;
+
+      color: var(--accent);
+
+      font-size: 12px;
+      font-weight: 800;
+
+      letter-spacing: 0.13em;
+
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      font-size:
+        clamp(40px, 7vw, 76px);
+
+      line-height: 0.92;
+
+      letter-spacing:
+        -0.07em;
+    }
+
+    .text-card {
+      margin-top: 30px;
+
+      padding: 36px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius:
+        var(--radius-xl);
+
+      background:
+        var(--surface);
+
+      backdrop-filter:
+        blur(30px);
+
+      -webkit-backdrop-filter:
+        blur(30px);
+
+      box-shadow:
+        var(--shadow);
+    }
+
+    .text-card p {
+      max-width: 720px;
+
+      color: var(--muted);
+
+      font-size:
+        clamp(17px, 2vw, 20px);
+
+      line-height: 1.75;
+    }
+
+    .text-card p + p {
+      margin-top: 24px;
+    }
+
+    /* --------------------------------
+       LINKS
+    -------------------------------- */
+
+    .link-list {
+      margin-top: 30px;
+
+      border-top:
+        1px solid var(--border);
+    }
+
+    .big-link {
+      display: flex;
+
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 20px;
+
+      padding: 25px 5px;
+
+      border-bottom:
+        1px solid var(--border);
+
+      font-size:
+        clamp(22px, 4vw, 38px);
+
+      font-weight: 700;
+
+      letter-spacing:
+        -0.045em;
+
+      transition:
+        color 0.2s ease,
+        padding-left 0.25s ease;
+    }
+
+    .big-link span:last-child {
+      color: var(--muted);
+
+      font-size: 20px;
+
+      transition:
+        transform 0.25s ease,
+        color 0.2s ease;
+    }
+
+    .big-link:hover {
+      color: var(--accent);
+
+      padding-left: 10px;
+    }
+
+    .big-link:hover span:last-child {
+      color: var(--accent);
+
+      transform:
+        translateX(5px);
+    }
+
+    /* --------------------------------
+       QUOTE
+    -------------------------------- */
+
+    .quote {
+      width: min(1050px, 92%);
+
+      margin: auto;
+
+      padding:
+        110px 0;
+    }
+
+    .quote-text {
+      max-width: 950px;
+
+      font-size:
+        clamp(38px, 7vw, 82px);
+
+      line-height: 0.98;
+
+      letter-spacing:
+        -0.075em;
+
+      font-weight: 700;
+    }
+
+    .quote-author {
+      margin-top: 28px;
+
+      color: var(--muted);
+
+      font-size: 13px;
+
+      letter-spacing: 0.08em;
+
+      text-transform: uppercase;
+    }
+
+    /* --------------------------------
+       CONTACT
+    -------------------------------- */
+
+    .contact {
+      width: min(900px, 92%);
+
+      margin: auto;
+
+      padding:
+        80px 0
+        130px;
+
+      text-align: center;
+    }
+
+    .contact h2 {
+      font-size:
+        clamp(48px, 8vw, 90px);
+
+      line-height: 0.9;
+
+      letter-spacing:
+        -0.08em;
+    }
+
+    .contact p {
+      max-width: 530px;
+
+      margin: 24px auto 32px;
+
+      color: var(--muted);
+
+      line-height: 1.6;
+    }
+
+    /* --------------------------------
+       FOOTER
+    -------------------------------- */
+
+    footer {
+      width: min(1050px, 92%);
+
+      margin: auto;
+
+      padding:
+        28px 0
+        40px;
+
+      border-top:
+        1px solid var(--border);
+
+      display: flex;
+
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 20px;
+
+      color: var(--muted);
+
+      font-size: 12px;
+    }
+
+    .footer-links {
+      display: flex;
+
+      align-items: center;
+
+      gap: 18px;
+    }
+
+    .footer-links a {
+      color: var(--text);
+
+      font-weight: 600;
+
+      transition:
+        color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    /* --------------------------------
+       MOBILE
+    -------------------------------- */
+
+    @media (max-width: 700px) {
+
+      nav {
+        top: 12px;
+      }
+
+      .brand span:last-child {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 130px;
+      }
+
+      h1 {
+        font-size:
+          clamp(58px, 18vw, 95px);
+      }
+
+      .section {
+        padding:
+          55px 0
+          80px;
+      }
+
+      .text-card {
+        padding: 25px;
+      }
+
+      .big-link {
+        padding:
+          21px 3px;
+      }
+
+      .big-link span:last-child {
+        font-size: 17px;
+      }
+
+      .quote {
+        padding:
+          80px 0;
+      }
+
+      .contact {
+        padding:
+          70px 0
+          100px;
+      }
+
+      footer {
+        flex-direction: column;
+
+        text-align: center;
+      }
+
+      .footer-links {
+        flex-wrap: wrap;
+
+        justify-content: center;
+      }
+    }
+
+    /* --------------------------------
+       ACCESSIBILITY
+    -------------------------------- */
+
+    :focus-visible {
+      outline:
+        3px solid var(--accent);
+
+      outline-offset:
+        4px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before {
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+	
+  <audio id="myAudio" autoplay muted loop>
+    <source src="Bach-Orchestral-Suite-no.-3-in-D-major-BWV-1068-Download-free-sheet-music(chosic.com).m4a" type="audio/mp4">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Background -->
+
+  <div
+    class="background"
+    aria-hidden="true"
+  >
+    <div class="orb orb-one"></div>
+    <div class="orb orb-two"></div>
+    <div class="orb orb-three"></div>
+  </div>
+
+
+  <!-- Navigation -->
+
+  <nav>
+
+    <a
+      href="#"
+      class="brand"
+      aria-label="Der schöne Junge – Startseite"
+    >
+      <span class="brand-icon">
+        ◆
+      </span>
+
+      <span>
+        Der schöne Junge
+      </span>
+    </a>
+	
+	
+  <button id="unmuteButton" class="nav-button">Hört gerne 🔈</button>
+
+  <script>
+    const audio = document.getElementById("myAudio");
+    const button = document.getElementById("unmuteButton");
+
+    button.addEventListener("click", () => {
+      audio.muted = false;
+      audio.volume = 1;
+      audio.play();
+
+      button.textContent = "Barockmusik";
+      button.disabled = true;
+    });
+  </script>
+
+  </nav>
+
+
+  <main>
+
+    <!-- TEXT -->
+
+    <section class="section">
+
+      <h2 class="section-title">
+        <BR>
+        Impressum
+      </h2>
+
+      <div class="text-card">
+
+<p>Angaben gemäß § 5 DDG</p><p>Daniel Müllenborn<br> 
+<br> 
+Wormser Str. 45<br> 
+50677 Köln <br> 
+</p><p> <strong>Vertreten durch: </strong><br>
+Daniel Müllenborn<br>
+</p><p><strong>Kontakt:</strong> <br>
+Telefon: 0151-68581819<br>
+E-Mail: <a href='mailto:hallo@derschoenejunge.de'>hallo@derschoenejunge.de</a></br></p><p><strong>Haftungsausschluss: </strong><br><br><strong>Haftung für Inhalte</strong><br><br>
+Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7 Abs.1 DDG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 DDG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.<br><br><strong>Haftung für Links</strong><br><br>
+Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.<br><br><strong>Urheberrecht</strong><br><br>
+Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.<br><br><strong>Datenschutz</strong><br><br>
+Die Nutzung unserer Webseite ist in der Regel ohne Angabe personenbezogener Daten möglich. Soweit auf unseren Seiten personenbezogene Daten (beispielsweise Name, Anschrift oder eMail-Adressen) erhoben werden, erfolgt dies, soweit möglich, stets auf freiwilliger Basis. Diese Daten werden ohne Ihre ausdrückliche Zustimmung nicht an Dritte weitergegeben. <br>
+Wir weisen darauf hin, dass die Datenübertragung im Internet (z.B. bei der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich. <br>
+Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten durch Dritte zur Übersendung von nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit ausdrücklich widersprochen. Die Betreiber der Seiten behalten sich ausdrücklich rechtliche Schritte im Falle der unverlangten Zusendung von Werbeinformationen, etwa durch Spam-Mails, vor.<br>
+</p><br> 
+Impressum von <a href="https://websitewissen.com" rel="dofollow">WebsiteWissen.com</a> nach einer Vorlage der <a href="https://www.kanzlei-hasselbach.de/" rel="dofollow">Kanzlei Hasselbach</a>.
+ 
+
+      </div>
+
+    </section>
+
+
+    <!-- LINKS -->
+
+    <section
+      class="section"
+      id="links"
+    >
+
+      <div class="section-number">
+        Externe Links
+      </div>
+
+
+      <h2 class="section-title">
+        Weiter
+        <span class="gradient">
+          geht's hier.
+        </span>
+      </h2>
+
+
+      <div class="link-list">
+
+
+        <a
+          class="big-link"
+          href="https://www.tiktok.com/@derschoenejunge"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span>TikTok</span>
+          <span>↗</span
+        </a>
+		
+		
+        <a
+          class="big-link"
+          href="https://www.twitch.tv/derschoenejunge"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span>Twitch</span>
+          <span>↗</span
+        </a>       
+		
+		 
+	<a
+          class="big-link"
+          href="https://vimeo.com/derschoenejunge"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span>Vimeo</span>
+          <span>↗</span>
+        </a>
+
+
+        <a
+          class="big-link"
+          href="https://www.flickr.com/photos/damuellen/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span>Flickr</span>
+          <span>↗</span>
+        </a>
+
+
+        <a
+          class="big-link"
+          href="https://music.apple.com/de/playlist/lieblingstitel/pl.u-r0UlKrEm"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span>Apple Music</span>
+          <span>↗</span>
+        </a>
+
+      </div>
+
+    </section>
+
+    <!-- CONTACT -->
+
+    <section
+      class="contact"
+      id="contact"
+    >
+
+      <div class="section-number">
+        Kontakt
+      </div>
+
+
+      <h2>
+        Lust auf
+        <span class="gradient">
+          mehr?
+        </span>
+      </h2>
+
+
+      <p>
+        Für Fragen, Ideen, Projekte oder einfach
+        einen guten Austausch.
+      </p>
+
+
+      <a
+        href="mailto:hallo@derschoenejunge.de"
+        class="button button-primary"
+      >
+        Kontakt aufnehmen
+      </a>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <span>
+      Vibe coded with 💖
+    </span>
+
+
+    <div class="footer-links">
+
+      <a
+        href="https://www.twitch.tv/derschoenejunge"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Twitch ↗
+      </a>
+
+      <a
+        href="https://www.tiktok.com/@derschoenejunge"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        TikTok ↗
+      </a>
+
+      <a
+        href="https://vimeo.com/derschoenejunge"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Vimeo ↗
+      </a>
+
+
+      <a
+        href="https://www.flickr.com/photos/damuellen/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Flickr ↗
+      </a>
+
+
+      <a
+        href="https://music.apple.com/de/playlist/lieblingstitel/pl.u-r0UlKrEm"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Apple Music ↗
+      </a>
+
+    </div>
+
+  </footer>
+
+</body>
+</html>
