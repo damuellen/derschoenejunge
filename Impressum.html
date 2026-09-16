@@ -329,18 +329,6 @@
       line-height: 1.6;
     }
 
-    .hero-links {
-      display: flex;
-
-      flex-wrap: wrap;
-
-      justify-content: center;
-
-      gap: 12px;
-
-      margin-top: 38px;
-    }
-
     .button {
       min-height: 50px;
 
@@ -418,7 +406,7 @@
       line-height: 0.92;
 
       letter-spacing:
-        -0.07em;
+        -0.04em;
     }
 
     .text-card {
@@ -454,6 +442,10 @@
         clamp(17px, 2vw, 20px);
 
       line-height: 1.75;
+
+      -webkit-user-select: none; /* Safari */      
+      -ms-user-select: none; /* IE 10 and IE 11 */
+      user-select: none; /* Standard syntax */
     }
 
     .text-card p + p {
@@ -492,8 +484,6 @@
       .text-card {
         padding: 25px;
       }
-
-
 
     }
 
@@ -554,7 +544,6 @@
         Der schöne Junge
       </span>
     </a>
-	
 	
   <button id="unmuteButton" class="nav-button">Hört gerne 🔈</button>
 
