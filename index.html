@@ -585,7 +585,7 @@
 
 <body>
 	
-  <audio id="myAudio" autoplay muted loop>
+  <audio id="myAudio" muted loop>
     <source src="Bach-Orchestral-Suite-no.-3-in-D-major-BWV-1068-Download-free-sheet-music(chosic.com).mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
@@ -609,12 +609,18 @@
       const button = document.getElementById("unmuteButton");
 
       button.addEventListener("click", () => {
-        audio.muted = false;
-        audio.volume = 1;
-        audio.play();
+        if (audio.muted) {
+		    audio.muted = false;
+	        audio.volume = 1;
+	        audio.play();
 
-        button.textContent = "Barockmusik";
-        button.disabled = true;
+			button.textContent = "Barockmusik 🔇";
+		} else {
+			audio.muted = true;
+			audio.pause();
+
+			button.textContent = "Barockmusik 🔈";
+		}
       });
     </script>
   </nav>
