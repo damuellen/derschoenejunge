@@ -569,7 +569,6 @@
 
       @media (max-width:700px) {
         nav { top: 12px; }
-        .brand span:last-child { display:none; }
         .hero { padding-top:130px; }
         h1 { font-size: clamp(58px,18vw,95px); }
         .section { padding:55px 0 80px; }
@@ -580,7 +579,9 @@
         .quote { padding:80px 0; }
         .contact { padding:70px 0 100px; }
         footer { flex-direction:column; text-align:center; }
-        .footer-links { flex-wrap:wrap; justify-content:center; }
+        .footer-links { display:none; }
+        .Impressum { display:inline !important; }
+        .Analytics { display:inline !important; }
       }
 
       @media (prefers-reduced-motion: reduce) {
@@ -1073,7 +1074,7 @@
 
       <div class="footer-links">
 
-        <a href="https://www.simpleanalytics.com?utm_source=derschoenejunge.de&utm_content=badge" referrerpolicy="origin"
+        <a class="Analytics" href="https://www.simpleanalytics.com?utm_source=derschoenejunge.de&utm_content=badge" referrerpolicy="origin"
           target="_blank" style="margin-right: 20px;">
           <picture>
             <source srcset="https://simpleanalyticsbadges.com/derschoenejunge.de?mode=dark&radius=6"
@@ -1138,13 +1139,13 @@
             <use xlink:href="#icon-Spotify" />
         </a>
 
-        <a href="Impressum.html" target="_blank" rel="noopener noreferrer" style="white-space: nowrap;">
+        <a class="Impressum" href="Impressum.html" target="_blank" rel="noopener noreferrer" style="white-space: nowrap;">
           Impressum ↗
         </a>
 
       </div>
     </footer>
-    
+
     <!-- 100% privacy-first analytics -->
     <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
   </body>
