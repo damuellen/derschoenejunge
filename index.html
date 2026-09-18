@@ -605,7 +605,7 @@
         <span>Der schöne Junge</span>
       </a>
 
-      <button id="unmuteButton" class="nav-link">Hört gerne 🔈</button>
+      <button id="unmuteButton" class="nav-link">Hört gerne</button>
 
       <script>
         const audio = document.getElementById("myAudio");
@@ -617,12 +617,12 @@
             audio.volume = 1;
             audio.play();
 
-            button.textContent = "Barockmusik 🔇";
+            button.textContent = "🔇 Bach";
           } else {
             audio.muted = true;
             audio.pause();
 
-            button.textContent = "Barockmusik 🔈";
+            button.textContent = "🔈 Bach";
           }
         });
       </script>
