@@ -116,7 +116,7 @@
       .brand {
         display: flex;
         align-items: center;
-        gap: 15px;
+        gap: 5px;
         font-size: 16px;
         font-weight: 700;
         letter-spacing: -.02em;
@@ -129,9 +129,11 @@
       }
 
       .nav-link {
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+                    "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
         padding: 9px 17px;
         border-radius: 999px;
-        font-size: 13px;
+        font-size: 12px;
         font-weight: 700;
       }
 
@@ -562,7 +564,7 @@
       }
 
       @media (max-width:700px) {
-        nav { top: 12px; }
+        nav { top: 11px; }        
         .hero { padding-top:130px; }
         h1 { font-size: clamp(58px,18vw,95px); }
         .section { padding:55px 0 80px; }
@@ -617,12 +619,12 @@
             audio.volume = 1;
             audio.play();
 
-            button.textContent = "🔇 Bach";
+            button.textContent = "🔇Bach";
           } else {
             audio.muted = true;
             audio.pause();
 
-            button.textContent = "🔈 Bach";
+            button.textContent = "🔈Bach";
           }
         });
       </script>
