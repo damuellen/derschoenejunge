@@ -545,22 +545,16 @@
         align-items: center;
         justify-content: space-evenly;
         gap: 5px;
-        color: var(--muted);
-      }
-
-      .footer-links {
-        display: flex;
-        align-items: center;
         font-size: 21px;
-      }
-
-      .footer-links a {
         color: var(--text);
         font-weight: 600;
         transition: color .2s ease;
       }
 
-      .footer-links a:hover { color: var(--accent); }
+      .footer-links {
+        display: flex;
+        align-items: center;        
+      }
 
       :focus-visible {
         outline: 3px solid var(--accent);
@@ -580,8 +574,6 @@
         .contact { padding:70px 0 100px; }
         footer { flex-direction:column; text-align:center; }
         .footer-links { display:none; }
-        .Impressum { display:inline !important; }
-        .Analytics { display:inline !important; }
       }
 
       @media (prefers-reduced-motion: reduce) {
@@ -1072,17 +1064,17 @@
 
     <footer>
 
-      <div class="footer-links">
+      <a class="Analytics" href="https://www.simpleanalytics.com?utm_source=derschoenejunge.de&utm_content=badge" referrerpolicy="origin"
+        target="_blank" style="margin-right: 20px;">
+        <picture>
+          <source srcset="https://simpleanalyticsbadges.com/derschoenejunge.de?mode=dark&radius=6"
+            media="(prefers-color-scheme: dark)" />
+          <img src="https://simpleanalyticsbadges.com/derschoenejunge.de?mode=light&radius=6" loading="lazy"
+            referrerpolicy="no-referrer" crossorigin="anonymous" />
+        </picture>
+      </a>
 
-        <a class="Analytics" href="https://www.simpleanalytics.com?utm_source=derschoenejunge.de&utm_content=badge" referrerpolicy="origin"
-          target="_blank" style="margin-right: 20px;">
-          <picture>
-            <source srcset="https://simpleanalyticsbadges.com/derschoenejunge.de?mode=dark&radius=6"
-              media="(prefers-color-scheme: dark)" />
-            <img src="https://simpleanalyticsbadges.com/derschoenejunge.de?mode=light&radius=6" loading="lazy"
-              referrerpolicy="no-referrer" crossorigin="anonymous" />
-          </picture>
-        </a>
+      <div class="footer-links">
 
         <a href="https://github.com/damuellen?achievement=pull-shark&amp;tab=achievements"><img
             src="https://github.githubassets.com/assets/pull-shark-bronze-a37accb528d1.png"
@@ -1139,11 +1131,11 @@
             <use xlink:href="#icon-Spotify" />
         </a>
 
-        <a class="Impressum" href="Impressum.html" target="_blank" rel="noopener noreferrer" style="white-space: nowrap;">
-          Impressum ↗
-        </a>
-
       </div>
+
+      <a class="Impressum" href="Impressum.html" target="_blank" rel="noopener noreferrer" style="white-space: nowrap;">
+        Impressum ↗
+      </a>
     </footer>
 
     <!-- 100% privacy-first analytics -->
