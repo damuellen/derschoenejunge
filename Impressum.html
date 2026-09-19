@@ -365,6 +365,27 @@
       margin-top: 24px;
     }
 
+    footer {
+        width: min(1050px,92%);
+        margin: auto;
+        padding: 28px 0 40px;
+        border-top: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        gap: 5px;
+        font-size: 21px;
+        color: var(--text);
+        font-weight: 600;
+        transition: color .2s ease;
+    }
+
+    .footer-links {
+        display: flex;
+        align-items: center;        
+    }
+
+	  
     /* --------------------------------
        MOBILE
     -------------------------------- */
@@ -398,7 +419,8 @@
         padding: 25px;
       }
 
-
+      footer { flex-direction:column; text-align:center; }
+      .footer-links { display:none; }
 
     }
 
@@ -501,5 +523,43 @@
       </div>
     </section>
   </main>
+
+  <footer>
+      <a class="Analytics" href="https://www.simpleanalytics.com?utm_source=derschoenejunge.de&utm_content=badge" referrerpolicy="origin"
+        target="_blank" style="margin-right: 20px;">
+        <picture>
+          <source srcset="https://simpleanalyticsbadges.com/derschoenejunge.de?mode=dark&radius=6"
+            media="(prefers-color-scheme: dark)" />
+          <img src="https://simpleanalyticsbadges.com/derschoenejunge.de?mode=light&radius=6" loading="lazy"
+            referrerpolicy="no-referrer" crossorigin="anonymous" />
+        </picture>
+      </a>
+
+	<div class="footer-links">
+
+        <a href="https://github.com/damuellen?achievement=pull-shark&amp;tab=achievements"><img
+            src="https://github.githubassets.com/assets/pull-shark-bronze-a37accb528d1.png"
+            data-hovercard-type="achievement"
+            data-hovercard-url="/users/damuellen/achievements/pull-shark/detail?hovercard=1" alt="Achievement: Pull Shark"
+            data-view-component="true" class="achievement-badge-sidebar" aria-keyshortcuts="Alt+ArrowUp"
+            style="width: 60%; height: Auto;">
+        </a>
+
+        <a href="https://github.com/damuellen?achievement=starstruck&amp;tab=achievements"><img
+            src="https://github.githubassets.com/assets/starstruck-default-b6610abad518.png"
+            data-hovercard-type="achievement"
+            data-hovercard-url="/users/damuellen/achievements/starstruck/detail?hovercard=1" alt="Achievement: Starstruck"
+            data-view-component="true" class="achievement-badge-sidebar" aria-keyshortcuts="Alt+ArrowUp"
+            style="width: 60%; height: Auto;"></a>
+
+        <a href="https://www.checkdomain.de/unternehmen/garantie/ssl/popup/"
+          onclick="window.open(this.href + '?host=' + window.location.host,'','height=600,width=560,scrollbars=yes'); return false;"
+          style="padding-right: 30px;">
+          <img
+            src="https://www.checkdomain.de/assets/bundles/web/app/widget/seal/img/ssl_certificate/de/150x150.png?20260910-155835"
+            width="64" alt="SSL-Zertifikat" style="width: 100%; height: Auto;" />
+        </a>
+	  </div>
+   </footer>
 </body>
 </html>
