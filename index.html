@@ -810,6 +810,78 @@
 
         </div>
 
+        
+    <div class="text-card">
+        <div class="tiktok-lazy">
+          <blockquote
+        class="tiktok-embed" cite="https://www.tiktok.com/@derschoenejunge" 
+            data-unique-id="derschoenejunge" 
+            data-embed-from="embed_page" d
+            data-embed-type="creator" 
+            style="max-width:870px; min-width:288px;">
+            <section> <a target="_blank" href="https://www.tiktok.com/@derschoenejunge?refer=creator_embed">@derschoenejunge</a> </section> 
+          </blockquote>
+        </div>
+    </div>
+    </section>
+
+    <script>
+    (() => {
+      let scriptPromise;
+
+      function loadTikTokScript() {
+        if (scriptPromise) return scriptPromise;
+
+        scriptPromise = new Promise((resolve, reject) => {
+          const existing = document.querySelector(
+            'script[src="https://www.tiktok.com/embed.js"]'
+          );
+
+          if (existing) {
+            existing.addEventListener('load', resolve, { once: true });
+            existing.addEventListener('error', reject, { once: true });
+
+            // It may already have loaded before this code ran.
+            if (window.tiktokEmbed) resolve();
+            return;
+          }
+
+          const script = document.createElement('script');
+          script.src = 'https://www.tiktok.com/embed.js';
+          script.async = true;
+          script.onload = resolve;
+          script.onerror = reject;
+          document.body.appendChild(script);
+        });
+
+        return scriptPromise;
+      }
+
+      const observer = new IntersectionObserver(async entries => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+
+          observer.unobserve(entry.target);
+
+          try {
+            await loadTikTokScript();
+
+            if (window.tiktokEmbed?.lib?.render) {
+              window.tiktokEmbed.lib.render(entry.target);
+            }
+          } catch (error) {
+            console.error('TikTok embed failed to load:', error);
+          }
+        }
+      }, {
+        rootMargin: '300px 0px'
+      });
+
+      document
+        .querySelectorAll('.tiktok-lazy .tiktok-embed')
+        .forEach(embed => observer.observe(embed));
+    })();
+    </script>
 
         <section class="section">
 
