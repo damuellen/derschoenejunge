@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
+<html lang="de"><head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Take and Email a Photo</title>
+    <title>Schick mir doch ein Foto</title>
 
     <style>
         :root {
@@ -405,32 +403,36 @@
     </nav>
     <main>
         <section class="section">
-<h1>Magst du mir ein Foto von dir schicken?</h1>
+
+            <h1>Schick mir doch ein <span class="gradient">Foto</span></h1>
+
             <div class="camera-card">
-                
+
                 <div>
                     <button id="startCamera" class="button-primary">Kamera einschalten </button>
                     <button id="takePhoto" class="button-primary" disabled>Auslöser </button>
+                    <button id="switchCamera" class="button-secondary" disabled>Wechsel Kamera </button>
                     <button id="retakePhoto" class="button-secondary" class="secondary" disabled>Nochmal! </button>
                 </div>
+
                 <video id="camera" autoplay playsinline></video>
-                                <div>
-                    <img id="preview" alt="Vorschau" class="preview"/>
+
+                <div>
+                    <img id="preview" alt="Vorschau" class="preview" />
                     <button id="sendPhoto" class="button-primary" class="success" disabled>
-                        Teilen 
+                        Teilen
                     </button>
                     <button id="downloadPhoto" class="button-secondary" class="secondary" disabled>
-                        Download 
+                        Download
                     </button>
                 </div>
-                <canvas id="canvas"></canvas>
 
+                <canvas id="canvas"></canvas>
 
                 <p id="status"></p>
             </div>
 
         </section>
-
 
         <script>
             const camera = document.getElementById("camera");
@@ -446,11 +448,17 @@
             let stream = null;
             let photoBlob = null;
 
+            const switchCameraButton = document.getElementById("switchCamera");
+
+            let currentCamera = "environment";
+
             async function startCamera() {
                 try {
+                    stopCamera();
+
                     stream = await navigator.mediaDevices.getUserMedia({
                         video: {
-                            facingMode: { ideal: "environment" }
+                            facingMode: { ideal: currentCamera }
                         },
                         audio: false
                     });
@@ -460,13 +468,29 @@
                     preview.style.display = "none";
 
                     takePhotoButton.disabled = false;
-                    statusText.textContent = "Camera ready.";
+                    switchCameraButton.disabled = false;
+                    statusText.textContent =
+                        currentCamera === "environment"
+                            ? "Rear camera selected."
+                            : "Front camera selected.";
                 } catch (error) {
                     console.error(error);
                     statusText.textContent =
-                        "Unable to access the camera. Please allow camera permission and use HTTPS.";
+                        "Unable to access the selected camera.";
                 }
             }
+
+            async function switchCamera() {
+                currentCamera =
+                    currentCamera === "environment"
+                        ? "user"
+                        : "environment";
+
+                await startCamera();
+            }
+
+            switchCameraButton.addEventListener("click", switchCamera);
+
 
             function takePhoto() {
                 if (!stream) return;
@@ -698,7 +722,5 @@
         </a>
     </footer>
 
-
 </body>
-
 </html>
