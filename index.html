@@ -462,6 +462,18 @@
          font-size: 13px;
       }
 
+
+      .tiktok-card {
+         margin-top: 30px;
+         padding: 16px;
+         border: 1px solid var(--border);
+         border-radius: 32px;
+         background: var(--surface);
+         backdrop-filter: blur(30px);
+         -webkit-backdrop-filter: blur(30px);
+         box-shadow: var(--shadow);
+         overflow: hidden;
+      }
       /* Foto */
 
       .photo-card {
@@ -677,7 +689,14 @@
 
          .video-card {
             padding: 8px;
-            border-radius: 216px;
+            border-radius: 16px;
+         }
+
+         .tiktok-card {
+            padding: 0px;
+            border-radius: 16px;
+            border-top-width: 0px;
+            border-bottom-width: 0px;
          }
          
          .photo-caption {
@@ -1002,11 +1021,11 @@ sondern als handverlesen persönlicher Raum für visuelle Eindrücke und Musik.
             <h2 class="section-title">
                Auch auf <span class="gradient">TikTok</span>
             </h2>
-         <div class="video-card">
+         <div class="tiktok-card">
             <div class="tiktok-lazy">
                <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@derschoenejunge"
                   data-unique-id="derschoenejunge" data-embed-from="embed_page" d data-embed-type="creator"
-                  style="max-width:870px; min-width:288px; border-radius:18px">
+                  style="max-width:870px; min-width:288px; border-radius:16px">
                   <section> <a target="_blank"
                         href="https://www.tiktok.com/@derschoenejunge?refer=creator_embed">@derschoenejunge</a>
                   </section>
@@ -1169,7 +1188,7 @@ sondern als handverlesen persönlicher Raum für visuelle Eindrücke und Musik.
 
             <div class="music-player">
 
-               <iframe data-testid="embed-iframe" style="border-radius:18px"
+               <iframe data-testid="embed-iframe" style="border-radius:16px"
                   src="https://open.spotify.com/embed/playlist/4YYqVHaeCVXSMyptZOPhtt?utm_source=generator&theme=0&si=033fcc248e914979"
                   width="100%" height="452" frameBorder="0" allowfullscreen="" allow="
           autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture
