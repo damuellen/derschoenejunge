@@ -125,6 +125,20 @@
          line-height: 1.5;
       }
 
+      embed {
+         background: var(--card);
+         border: 1px solid var(--border);
+
+         border-radius: 28px;
+         padding: 18px;
+
+         box-shadow: var(--shadow);
+
+         backdrop-filter: blur(25px);
+         -webkit-backdrop-filter: blur(25px);
+         width: 760px;
+         height: 70vh;
+      }
       /* Music card */
 
       .music-card {
@@ -235,6 +249,11 @@
 
       </header>
 
+      <section>
+         <embed src="Music_Playlist.txt">
+      </section>
+
+
       <h2>Spotify</h2>
       <section class="music-card">
 
@@ -263,6 +282,7 @@
          </div>
 
       </section>
+
 
       <footer class="footer">
          <a class="Analytics" href="https://www.simpleanalytics.com?utm_source=derschoenejunge.de&utm_content=badge"
