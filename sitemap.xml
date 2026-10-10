@@ -2,11 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.derschoenejunge.de/</loc>
-    <lastmod>2026-09-20</lastmod>
+    <lastmod>2026-10-10</lastmod>
+  </url>
+    <url>
+  <loc>https://www.derschoenejunge.de/en/</loc>
+    <lastmod>2026-10-10</lastmod>
+  </url>
+  <url>
+  <loc>https://www.derschoenejunge.de/es/</loc>
+    <lastmod>2026-10-10</lastmod>
+  </url>
+  <url>
+    <loc>https://www.derschoenejunge.de/Musik.html</loc>
+    <lastmod>2026-10-10</lastmod>
   </url>
   <url>
     <loc>https://www.derschoenejunge.de/music.html</loc>
-    <lastmod>2026-09-20</lastmod>
+    <lastmod>2026-10-10</lastmod>
   </url>
   <url>
     <loc>https://www.derschoenejunge.de/Fitness.html</loc>
@@ -14,6 +26,6 @@
   </url>
   <url>
     <loc>https://www.derschoenejunge.de/Kontakt.html</loc>
-    <lastmod>2026-09-20</lastmod>
+    <lastmod>2026-10-10</lastmod>
   </url>
 </urlset>
