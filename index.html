@@ -42,6 +42,15 @@
 
    <!-- Browser-Darstellung -->
    <meta name="theme-color" content="#111111">
+   <script type="text/javascript">
+      const lang = navigator.language;
+      
+      if (lang.startsWith('en')) {
+         window.location.href = '/en/';
+      } else if (lang.startsWith('es')) {
+         window.location.href = '/es/';
+      } 
+   </script>
 
    <!-- Microsoft Clarity -->
    <script type="text/javascript">
