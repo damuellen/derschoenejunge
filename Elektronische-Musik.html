@@ -113,6 +113,15 @@
          box-shadow: 0 10px 40px rgba(0, 0, 0, .08);
       }
 
+      .nav-link {
+         font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+            "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+         padding: 9px 17px;
+         border-radius: 999px;
+         font-size: 17px;
+         font-weight: 700;
+      }
+
       .brand {
          display: flex;
          align-items: center;
@@ -134,7 +143,7 @@
       .section {
          width: min(1000px, 92%);
          margin: auto;
-         padding: 80px 0 20px;
+         padding: 80px 0 100px;
       }
 
       .section-title {
@@ -197,6 +206,7 @@
          color: var(--text);
          font-weight: 600;
          transition: color .2s ease;
+         bottom: 18px;
       }
 
       :focus-visible {
@@ -207,14 +217,14 @@
       pre {
          display: none;
       }
-      
+
       @media (max-width:700px) {
          nav {
             top: 11px;
          }
 
          .section {
-            padding: 75px 0 30px;
+            padding: 75px 0 40px;
          }
 
          footer {
@@ -279,6 +289,7 @@
          <text x="348" y="61" font-size="64" fill="none" stroke="#ffb3d9" stroke-width="2" stroke-linejoin="round" letter-spacing="2">DER SCHöNE JUNGE</text>
       </g>
       </a>
+  
    </nav>
 
 <pre>
@@ -379,7 +390,7 @@ Scuba - You Got Me
 
          </main>
    <footer>
-
+     <div id="fullscreen" class="nav-link">Vollbild Modus aktivieren</div>
       <a class="Analytics" href="https://www.simpleanalytics.com?utm_source=derschoenejunge.de&utm_content=badge"
          referrerpolicy="origin" target="_blank" style="margin-right: 20px;">
          <picture>
@@ -391,7 +402,11 @@ Scuba - You Got Me
       </a>
 
    </footer>
-
+   <script>
+   document.getElementById("fullscreen").addEventListener("click", () => {
+      document.getElementById("canvas").requestFullscreen();
+   });
+   </script>
    <!-- 100% privacy-first analytics -->
    <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
    <!-- https://codepen.io/kasunshana/pen/OPVEOPN -->
