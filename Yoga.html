@@ -110,15 +110,6 @@
          box-shadow: 0 10px 40px rgba(0, 0, 0, .08);
       }
 
-      .nav-link {
-         font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
-            "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
-         padding: 9px 17px;
-         border-radius: 999px;
-         font-size: 17px;
-         font-weight: 700;
-      }
-
       .brand {
          display: flex;
          align-items: center;
@@ -141,13 +132,6 @@
          width: min(1000px, 92%);
          margin: auto;
          padding: 80px 0 30px;
-      }
-
-      .section-title {
-         margin-top: 12px;
-         font-size: clamp(40px, 7vw, 76px);
-         line-height: .92;
-         letter-spacing: -.04em;
       }
 
       /* Music */
@@ -182,10 +166,6 @@
          border: 0;
       }
 
-      .featured {
-         padding: 10px;
-      }
-
       .music-player {
          border-radius: 18px;
       }
@@ -206,15 +186,6 @@
          bottom: 18px;
       }
 
-      :focus-visible {
-         outline: 3px solid var(--accent);
-         outline-offset: 4px;
-      }
-
-      pre {
-         display: none;
-      }
-
       @media (max-width:700px) {
          nav {
             top: 11px;
@@ -228,10 +199,6 @@
             flex-direction: column;
             text-align: center;
          }
-
-         .nav-link {
-            display: none;
-         }
       }
 
       @media (prefers-reduced-motion: reduce) {
@@ -239,8 +206,7 @@
             scroll-behavior: auto;
          }
 
-         *,
-         *::before {
+         * {
             transition: none !important;
          }
 
@@ -614,7 +580,8 @@
          }
       </script>
       <!-- 100% privacy-first analytics -->
-      <script data-collect-dnt="true" data-detect-404="true" async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+      <script data-collect-dnt="true" data-detect-404="true" async
+         src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
 
    </body>
 
